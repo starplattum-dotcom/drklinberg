@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="z27adBWBl74KkJp9NWLdK_kzqx6hdGp8yvHuQmLVYnA" />
+    <title>Виталий Клинберг — КПТ психолог | CBT Psychologist — Vitaly Klinberg</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ===== ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ FAQ ===== */
+        .faq {
+            padding: 160px 8%;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.03);
+            position: relative;
+        }
+
+        .faq::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 10%;
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(58, 58, 58, 0.1), transparent);
+        }
+
+        .faq-wrap {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .faq-small {
+            font-family: "Inter", sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #8A8A8A;
+            margin-bottom: 20px;
+        }
+
+        .faq-title {
+            font-family: "Playfair Display", serif;
+            font-size: 44px;
+            font-weight: 500;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            color: #1F1F1F;
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+            border-color: rgba(58, 58, 58, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .faq-item.active {
+            background: rgba(255, 255, 255, 0.6);
+            border-color: rgba(58, 58, 58, 0.2);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .faq-question {
+            padding: 24px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: "Inter", sans-serif;
+            font-size: 18px;
+            font-weight: 500;
+            color: #1F1F1F;
+            user-select: none;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .faq-icon {
+            font-size: 28px;
+            font-weight: 300;
+            color: #8A8A8A;
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            line-height: 1;
+            flex-shrink: 0;
+            margin-left: 20px;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+            color: #3A3A3A;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                        padding 0.4s ease,
+                        opacity 0.4s ease;
+            opacity: 0;
+            padding: 0 32px;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 400px;
+            padding: 0 32px 24px 32px;
+            opacity: 1;
+        }
+
+        .faq-answer p {
+            font-family: "Inter", sans-serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #666666;
+            margin: 0;
+            transform: translateY(10px);
+            transition: transform 0.5s ease 0.1s;
+            opacity: 0.7;
+        }
+
+        .faq-item.active .faq-answer p {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* АДАПТИВНОСТЬ FAQ */
+        @media (max-width: 768px) {
+            .faq { padding: 100px 30px; }
+            .faq-title { font-size: 34px; }
+            .faq-question { 
+                font-size: 16px; 
+                padding: 20px 24px;
+            }
+            .faq-answer p { font-size: 15px; }
+            .faq-item.active .faq-answer { 
+                padding: 0 24px 20px 24px; 
+            }
+            .faq-icon { font-size: 24px; }
+        }
+
+        @media (max-width: 480px) {
+            .faq { padding: 80px 20px; }
+            .faq-title { font-size: 28px; }
+            .faq-question { 
+                font-size: 15px; 
+                padding: 16px 20px;
+            }
+            .faq-item.active .faq-answer { 
+                padding: 0 20px 16px 20px; 
+            }
+        }
+        /* ===== CONTACT ICONS (КРУГЛЫЕ КНОПКИ) ===== */
+        .contact-actions {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .contact-icons {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .contact-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #ffffff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            color: #1F1F1F;
+            text-decoration: none;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                        box-shadow 0.4s ease,
+                        background 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-icon svg {
+            width: 26px;
+            height: 26px;
+            transition: transform 0.4s ease;
+            z-index: 2;
+        }
+
+        /* Эффекты при наведении */
+        .contact-icon:hover {
+            transform: translateY(-6px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-icon:hover svg {
+            transform: scale(1.15) rotate(-5deg);
+        }
+
+        /* Индивидуальные цвета */
+        .telegram-icon:hover {
+            background: #0088cc;
+            color: #ffffff;
+            box-shadow: 0 12px 30px rgba(0, 136, 204, 0.4);
+        }
+
+        .linkedin-icon:hover {
+            background: #0A66C2;
+            color: #ffffff;
+            box-shadow: 0 12px 30px rgba(10, 102, 194, 0.4);
+        }
+
+        .whatsapp-icon:hover {
+            background: #25D366;
+            color: #ffffff;
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Пульсирующее кольцо при наведении */
+        .contact-icon::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 2px solid currentColor;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+
+        .contact-icon:hover::before {
+            opacity: 0.3;
+            transform: scale(1.15);
+        }
+
+        /* Кнопка "Выбрать время" — оставляем как была */
+        .contact-btn.calendly {
+            padding: 18px 36px;
+            border-radius: 100px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-btn.calendly:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Адаптив */
+        @media (max-width: 768px) {
+            .contact-actions {
+                gap: 18px;
+            }
+            .contact-icon {
+                width: 52px;
+                height: 52px;
+            }
+            .contact-icon svg {
+                width: 22px;
+                height: 22px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-icon {
+                width: 48px;
+                height: 48px;
+            }
+            .contact-icon svg {
+                width: 20px;
+                height: 20px;
+            }
+            .contact-actions {
+                gap: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== LANGUAGE SWITCHER ===== -->
+    <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="ru">
+            <span class="lang-flag">🇷🇺</span> RU
+        </button>
+        <button class="lang-btn" data-lang="en">
+            <span class="lang-flag">🇬🇧</span> EN
+        </button>
+    </div>
+
+    <!-- 1. HERO -->
+    <section class="hero">
+        <div class="hero-left">
+            <!-- RU -->
+            <div class="eyebrow lang-ru">Клинберг Виталий. Практикующий психолог</div>
+            <h1 class="lang-ru">Спокойствие начинается с первого разговора.</h1>
+            <p class="lang-ru">Помогаю справиться с тревогой, паническими атаками, выгоранием и трудностями в отношениях.</p>
+            <a href="#contact" class="button lang-ru">Записаться на консультацию →</a>
+            
+            <!-- EN -->
+            <div class="eyebrow lang-en" style="display:none;">Vitaly Klinberg. CBT Psychologist</div>
+            <h1 class="lang-en" style="display:none;">Peace begins with the first conversation.</h1>
+            <p class="lang-en" style="display:none;">I help with anxiety, panic attacks, burnout, and relationship difficulties.</p>
+            <a href="#contact" class="button lang-en" style="display:none;">Book a consultation →</a>
+        </div>
+        <div class="hero-right reveal-image">
+            <img src="img/hero.jpg" alt="Психолог Виталий Клинберг">
+        </div>
+    </section>
+
+        <!-- 2. ABOUT -->
+    <section class="about">
+        <div class="about-wrap">
+            <div class="about-image reveal-image">
+                <img src="img/about.jpg" alt="Виталий Клинберг — практикующий психолог">
+            </div>
+            <div class="about-content">
+                <!-- RU -->
+                <p class="about-small reveal lang-ru">Обо мне</p>
+                <h2 class="about-title reveal lang-ru">Практикующий психолог, КПТ-терапевт, магистр</h2>
+                <p class="about-text reveal lang-ru">Более 8 лет работаю в интегративном подходе: когнитивно-поведенческая терапия, схема-терапия, методы осознанности, тренинг навыков решения проблем и поведенческая активация.</p>
+                <p class="about-text reveal lang-ru">Магистр психологии (МГППУ). Практика в Институте психотерапии и клинической психологии и Московском психологическом центре. С 2021 года — волонтер программы ЮНИСЕФ в Кабо-Верде: дистанционная поддержка уязвимых групп, кризисные консультации.</p>
+                <p class="about-text reveal lang-ru">Автор книг и научных статей, действительный член Литературного сообщества психологов. Моя задача — создать безопасное пространство, где вы сможете честно говорить о своих переживаниях и находить ресурсы для изменений.</p>
+
+                <a href="publications.html" class="about-link reveal lang-ru">
+                    <span>Публикации и научные работы</span>
+                    <span class="about-link-arrow">→</span>
+                </a>
+
+                <!-- EN -->
+                <p class="about-small reveal lang-en" style="display:none;">About me</p>
+                <h2 class="about-title reveal lang-en" style="display:none;">Practicing psychologist, CBT therapist, Master's degree holder</h2>
+                <p class="about-text reveal lang-en" style="display:none;">For over 8 years I have been working with an integrative approach: Cognitive Behavioral Therapy, Schema Therapy, Mindfulness-Based Methods (MBCT), Problem-Solving Skills Training (PSS), and Behavioral Activation.</p>
+                <p class="about-text reveal lang-en" style="display:none;">Master's degree in Psychology (MGPPU). Practice at the Institute of Psychotherapy and Clinical Psychology and the Moscow Psychological Center. Since 2021 — volunteer of the UNICEF program in Cabo Verde: remote support for vulnerable groups and crisis counseling.</p>
+                <p class="about-text reveal lang-en" style="display:none;">Author of books and research papers, full member of the Literary Community of Psychologists. My goal is to create a safe space where you can speak honestly about your experiences and find resources for change.</p>
+
+                <a href="publications.html" class="about-link reveal lang-en" style="display:none;">
+                    <span>Publications and research</span>
+                    <span class="about-link-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. HOW -->
+    <section class="how">
+        <div class="how-wrap">
+            <div class="how-header reveal">
+                <!-- RU -->
+                <p class="how-small lang-ru">Как я работаю</p>
+                <h2 class="how-title lang-ru">Путь к спокойствию в 4 шага</h2>
+                
+                <!-- EN -->
+                <p class="how-small lang-en" style="display:none;">How I work</p>
+                <h2 class="how-title lang-en" style="display:none;">Path to peace in 4 steps</h2>
+            </div>
+            <div class="how-grid">
+                <!-- Card 1 -->
+                <div class="how-card reveal">
+                    <span class="how-number">01</span>
+                    <h3 class="lang-ru">Знакомство</h3>
+                    <h3 class="lang-en" style="display:none;">Introduction</h3>
+                    <p class="lang-ru">Первая встреча — знакомство, сбор запроса и определение целей работы.</p>
+                    <p class="lang-en" style="display:none;">First session — getting to know each other, gathering your request, and defining goals.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="how-card reveal">
+                    <span class="how-number">02</span>
+                    <h3 class="lang-ru">Диагностика</h3>
+                    <h3 class="lang-en" style="display:none;">Diagnostics</h3>
+                    <p class="lang-ru">Глубокий анализ ситуации, выявление причин и триггеров ваших состояний.</p>
+                    <p class="lang-en" style="display:none;">In-depth analysis of your situation, identifying root causes and triggers.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="how-card reveal">
+                    <span class="how-number">03</span>
+                    <h3 class="lang-ru">Терапия</h3>
+                    <h3 class="lang-en" style="display:none;">Therapy</h3>
+                    <p class="lang-ru">Регулярные встречи с использованием эффективных методик для устойчивых изменений.</p>
+                    <p class="lang-en" style="display:none;">Regular sessions using effective methods for lasting change.</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="how-card reveal">
+                    <span class="how-number">04</span>
+                    <h3 class="lang-ru">Поддержка</h3>
+                    <h3 class="lang-en" style="display:none;">Support</h3>
+                    <p class="lang-ru">Закрепление результатов, профилактика рецидивов и сопровождение после завершения терапии.</p>
+                    <p class="lang-en" style="display:none;">Reinforcing results, relapse prevention, and ongoing support after therapy ends.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. CONSULTATION -->
+    <section class="consultation">
+        <div class="consultation-image reveal-image">
+            <img src="img/consultation.jpg" alt="Consultation">
+        </div>
+        <div class="consultation-content">
+            <!-- RU -->
+            <p class="consultation-small reveal lang-ru">Иногда самые сложные чувства появляются</p>
+            <h2 class="consultation-title reveal lang-ru">Не потому, что вы слабы,<br>а потому, что слишком долго<br>справлялись со всем<br>в одиночку.</h2>
+            <p class="consultation-text reveal lang-ru">Я знаю, что такое сомневаться,<br>не находить сил и чувствовать себя чужим<br> в собственной жизни.</p>
+            
+            <!-- EN -->
+            <p class="consultation-small reveal lang-en" style="display:none;">Sometimes the most difficult feelings arise</p>
+            <h2 class="consultation-title reveal lang-en" style="display:none;">Not because you are weak,<br>but because for too long you handled<br> everything on your own.</h2>
+            <p class="consultation-text reveal lang-en" style="display:none;">I know what it’s like to have doubts,<br>to lack the strength, and to feel like a stranger<br> in your own life</p>
+        </div>
+    </section>
+    <!-- ===== 5. BOOKS ===== -->
+    <section class="books" id="books">
+        <div class="books-wrap">
+            <div class="books-header reveal">
+                <!-- RU -->
+                <p class="books-small lang-ru">Мои книги</p>
+                <h2 class="books-title lang-ru">Живые истории, а не учебники</h2>
+                <p class="books-intro lang-ru">Мои книги — не учебники, не сборники советов. Это живые истории людей, которые встали, когда всё рухнуло. Здесь нет волшебных решений — есть карта пути, который вы можете пройти. Ваш страх, стыд, вина — не вы. Вы — тот, кто по ту сторону. Если устали бороться с собой — откройте любую главу.</p>
+
+                <!-- EN -->
+                <p class="books-small lang-en" style="display:none;">My books</p>
+                <h2 class="books-title lang-en" style="display:none;">Living stories, not textbooks</h2>
+                <p class="books-intro lang-en" style="display:none;">My books are not textbooks or collections of advice. They are living stories of people who stood up when everything collapsed. There are no magic solutions here — there is a map of the path you can walk. Your fear, shame, and guilt are not you. You are the one on the other side. If you are tired of fighting yourself — open any chapter.</p>
+            </div>
+
+            <div class="books-grid">
+                <!-- Книга 1 -->
+                <a href="https://ridero.ru/books/kak_vybratsya_iz_bolota/" target="_blank" rel="noopener" class="book-card reveal">
+                    <div class="book-cover">
+                        <img src="img/book-boloto.jpg" alt="Как выбраться из болота — Виталий Клинберг">
+                    </div>
+                    <h3 class="book-title lang-ru">Как выбраться из болота</h3>
+                    <h3 class="book-title lang-en" style="display:none;">How to Get Out of the Swamp</h3>
+                    <p class="book-sub lang-ru">Пошаговое руководство по самопомощи</p>
+                    <p class="book-sub lang-en" style="display:none;">A step-by-step self-help guide</p>
+                </a>
+
+                <!-- Книга 2 -->
+                <a href="https://ridero.ru/books/chelovek_po_tu_storonu_problemy/" target="_blank" rel="noopener" class="book-card reveal">
+                    <div class="book-cover">
+                        <img src="img/book-chelovek.jpg" alt="Человек по ту сторону проблемы — Виталий Клинберг">
+                    </div>
+                    <h3 class="book-title lang-ru">Человек по ту сторону проблемы</h3>
+                    <h3 class="book-title lang-en" style="display:none;">The Person Beyond the Problem</h3>
+                    <p class="book-sub lang-ru">Истории психолога о том, как люди возвращаются к себе</p>
+                    <p class="book-sub lang-en" style="display:none;">A psychologist's stories of people returning to themselves</p>
+                </a>
+
+                <!-- Книга 3 -->
+                <a href="https://ridero.ru/books/kak_vybratsya_iz_bolota/" target="_blank" rel="noopener" class="book-card reveal">
+                    <div class="book-cover">
+                        <img src="img/book-shagi.jpg" alt="Первые шаги в КПТ — Виталий Клинберг">
+                    </div>
+                    <h3 class="book-title lang-ru">Первые шаги в когнитивно-поведенческой терапии</h3>
+                    <h3 class="book-title lang-en" style="display:none;">First Steps in Cognitive Behavioral Therapy</h3>
+                    <p class="book-sub lang-ru">Практическое введение в КПТ</p>
+                    <p class="book-sub lang-en" style="display:none;">A practical introduction to CBT</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 6. FAQ (НОВЫЙ БЛОК) ===== -->
+    <section class="faq" id="faq">
+        <div class="faq-wrap">
+            <div class="faq-header reveal">
+                <!-- RU -->
+                <p class="faq-small lang-ru">Часто задаваемые вопросы</p>
+                <h2 class="faq-title lang-ru">Ответы на важные вопросы</h2>
+                
+                <!-- EN -->
+                <p class="faq-small lang-en" style="display:none;">Frequently Asked Questions</p>
+                <h2 class="faq-title lang-en" style="display:none;">Answers to important questions</h2>
+            </div>
+
+            <div class="faq-list">
+                <!-- Вопрос 1 -->
+                <div class="faq-item reveal">
+                    <div class="faq-question">
+                        <span class="lang-ru">Как проходит первая консультация?</span>
+                        <span class="lang-en" style="display:none;">How does the first consultation go?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="lang-ru">Первая встреча длится 50-60 минут. Мы знакомимся, вы рассказываете о своей ситуации и ожиданиях, я задаю уточняющие вопросы. В конце мы обсуждаем план дальнейшей работы и определяем, подходит ли нам сотрудничество.</p>
+                        <p class="lang-en" style="display:none;">The first session lasts 50-60 minutes. We get to know each other, you share your situation and expectations, and I ask clarifying questions. At the end, we discuss the plan for further work and determine if we are a good fit.</p>
+                    </div>
+                </div>
+
+                <!-- Вопрос 2 -->
+                <div class="faq-item reveal">
+                    <div class="faq-question">
+                        <span class="lang-ru">Сколько сессий обычно требуется?</span>
+                        <span class="lang-en" style="display:none;">How many sessions are usually needed?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="lang-ru">Всё индивидуально. Для решения конкретного запроса может потребоваться от 5 до 15 встреч. Глубокая работа с более сложными темами может занять от нескольких месяцев до года. Мы регулярно отслеживаем прогресс и корректируем план терапии.</p>
+                        <p class="lang-en" style="display:none;">It depends. A specific issue may take 5 to 15 sessions. Deeper work on more complex topics can take several months to a year. We regularly track progress and adjust the therapy plan.</p>
+                    </div>
+                </div>
+
+                <!-- Вопрос 3 -->
+                <div class="faq-item reveal">
+                    <div class="faq-question">
+                        <span class="lang-ru">Помогает ли терапия онлайн?</span>
+                        <span class="lang-en" style="display:none;">Is online therapy effective?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="lang-ru">Да, онлайн-терапия показывает высокую эффективность. Многие клиенты отмечают, что чувствуют себя более безопасно и расслабленно в привычной обстановке. Это также экономит время на дорогу и позволяет работать с психологом из любой точки мира.</p>
+                        <p class="lang-en" style="display:none;">Yes, online therapy is highly effective. Many clients feel more safe and relaxed in their familiar environment. It also saves travel time and allows you to work with a psychologist from anywhere in the world.</p>
+                    </div>
+                </div>
+
+                <!-- Вопрос 4 -->
+                <div class="faq-item reveal">
+                    <div class="faq-question">
+                        <span class="lang-ru">Что делать, если я не готов(а) говорить о глубоких переживаниях?</span>
+                        <span class="lang-en" style="display:none;">What if I'm not ready to talk about deep experiences?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="lang-ru">Это нормально. Терапия — это процесс, который движется в вашем темпе. Мы не будем форсировать события. Вы всегда можете сказать, что какая-то тема для вас слишком сложна, и мы отложим её до момента, когда вы будете готовы. Моя задача — создать максимально комфортное пространство для вас.</p>
+                        <p class="lang-en" style="display:none;">That's completely normal. Therapy is a process that moves at your pace. We won't force things. You can always say that a topic is too difficult, and we'll postpone it until you're ready. My goal is to create the most comfortable space for you.</p>
+                    </div>
+                </div>
+
+                <!-- Вопрос 5 -->
+                <div class="faq-item reveal">
+                    <div class="faq-question">
+                        <span class="lang-ru">Конфиденциально ли это?</span>
+                        <span class="lang-en" style="display:none;">Is it confidential?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="lang-ru">Абсолютно. Вся информация, которой вы делитесь в рамках терапии, строго конфиденциальна. Я соблюдаю этический кодекс психолога и все нормы профессиональной тайны. Исключение составляют лишь случаи, когда существует угроза жизни или здоровью.</p>
+                        <p class="lang-en" style="display:none;">Absolutely. All information you share in therapy is strictly confidential. I adhere to the psychologist's ethical code and all professional secrecy standards. The only exceptions are cases where there is a threat to life or health.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+            <!-- 7. CONTACT -->
+    <section class="contact" id="contact">
+        <div class="contact-wrap">
+            <div class="contact-content-box">
+                <!-- RU -->
+                <h2 class="contact-title reveal lang-ru">Запишитесь на консультацию</h2>
+                <p class="contact-text reveal lang-ru">Напишите мне в Telegram, LinkedIn или WhatsApp, и мы договоримся о встрече.</p>
+
+                <!-- EN -->
+                <h2 class="contact-title reveal lang-en" style="display:none;">Book a consultation</h2>
+                <p class="contact-text reveal lang-en" style="display:none;">Message me on Telegram, LinkedIn, or WhatsApp, and we will arrange a meeting.</p>
+
+                <!-- ЕДИНЫЙ блок: иконки + кнопка (для обоих языков) -->
+                <div class="contact-actions reveal">
+                    <!-- Круглые иконки -->
+                    <div class="contact-icons">
+                        <a href="https://t.me/your_username" 
+                           target="_blank" 
+                           rel="noopener"
+                           class="contact-icon telegram-icon"
+                           aria-label="Telegram">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21.5 3.5L2.5 10.5L8.5 12.5L10.5 20.5L14.5 15L19.5 19L21.5 3.5Z" 
+                                      fill="currentColor"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/drklinberg" 
+                           target="_blank" 
+                           rel="noopener me"
+                           class="contact-icon linkedin-icon"
+                           aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6C1.13 6 0 4.88 0 3.5C0 2.12 1.13 1 2.5 1C3.87 1 4.98 2.12 4.98 3.5ZM5 8H0V24H5V8ZM13.5 8H8.5V24H13.5V15.5C13.5 13 14 11 16.5 11C19 11 19 13.5 19 15.5V24H24V14.5C24 9.5 22 7 18 7C15.5 7 14 8 13.5 9V8Z" 
+                                      fill="currentColor"/>
+                            </svg>
+                        </a>
+                        <a href="https://wa.me/your_phone" 
+                           target="_blank" 
+                           rel="noopener"
+                           class="contact-icon whatsapp-icon"
+                           aria-label="WhatsApp">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17.6 6.32C16.1 4.82 14.1 4 12 4C7.58 4 4 7.58 4 12C4 13.5 4.4 14.9 5.15 16.1L4 20L8.05 18.88C9.2 19.55 10.55 19.95 12 19.95C16.42 19.95 20 16.37 20 11.95C20 9.88 19.1 7.82 17.6 6.32ZM12 18.5C10.8 18.5 9.6 18.2 8.55 17.6L8.3 17.45L5.9 18.08L6.55 15.75L6.4 15.5C5.75 14.4 5.4 13.2 5.4 12C5.4 8.35 8.35 5.4 12 5.4C15.65 5.4 18.6 8.35 18.6 12C18.6 15.65 15.65 18.5 12 18.5ZM15.5 13.3C15.3 13.2 14.3 12.7 14.15 12.65C13.95 12.55 13.8 12.5 13.7 12.7C13.55 12.9 13.15 13.4 13 13.55C12.9 13.7 12.7 13.7 12.5 13.6C12.3 13.5 11.6 13.25 10.8 12.55C10.2 12 9.8 11.3 9.7 11.1C9.6 10.9 9.7 10.8 9.8 10.7C9.9 10.6 10.05 10.45 10.15 10.3C10.25 10.15 10.3 10.05 10.4 9.9C10.5 9.75 10.45 9.6 10.4 9.5C10.35 9.4 9.95 8.4 9.8 8C9.65 7.6 9.45 7.65 9.3 7.65C9.15 7.65 9 7.65 8.85 7.65C8.7 7.65 8.45 7.7 8.25 7.9C8.05 8.1 7.55 8.6 7.55 9.6C7.55 10.6 8.25 11.55 8.35 11.65C8.45 11.75 9.95 14.05 12.25 15C13.75 15.65 14.3 15.7 14.85 15.65C15.4 15.6 16.2 15.15 16.4 14.65C16.6 14.15 16.6 13.75 16.55 13.65C16.5 13.55 16.3 13.5 16.1 13.4C15.9 13.3 15.7 13.4 15.5 13.3Z" 
+                                      fill="currentColor"/>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <!-- Кнопка "Выбрать время" с переключением языка -->
+                    <a href="https://calendly.com/starplattum/60min" 
+                       target="_blank" 
+                       class="contact-btn calendly lang-ru">Выбрать время ⏰</a>
+                    <a href="https://calendly.com/starplattum/60min" 
+                       target="_blank" 
+                       class="contact-btn calendly lang-en" style="display:none;">Choose a time ⏰</a>
+                </div>
+
+                <!-- Заметка о бесплатной консультации -->
+                <p class="contact-note reveal lang-ru">Первая 15-минутная консультация — бесплатно.</p>
+                <p class="contact-note reveal lang-en" style="display:none;">First 15-minute consultation is free.</p>
+            </div>
+
+            <div class="contact-image-box reveal-image">
+                <img src="img/phone.png" alt="Онлайн-консультация психолога" />
+            </div>
+        </div>
+    </section>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-wrap">
+            <p class="lang-ru">© 2026 Виталий Клинберг. Практикующий психолог.</p>
+            <p class="lang-en" style="display:none;">© 2026 Vitaly Klinberg. CBT Psychologist.</p>
+        </div>
+    </footer>
+
+    <!-- ===== СКРИПТЫ ===== -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.16/dist/lenis.min.js"></script>
+
+    <script>
+        // ===== СБРОС СКРОЛЛА ПРИ ОБНОВЛЕНИИ =====
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+
+        // ===== LENIS =====
+        const lenis = new Lenis({
+            duration: 1.2,
+            smoothWheel: true,
+            touchMultiplier: 1.5,
+        });
+        lenis.on('scroll', ScrollTrigger.update);
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+
+        // ===== GSAP =====
+        gsap.registerPlugin(ScrollTrigger);
+
+        // ===== HERO LOAD ANIMATION =====
+        window.addEventListener('load', () => {
+            gsap.fromTo('.hero-right', 
+                { opacity: 0, scale: 0.95 },
+                { opacity: 1, scale: 1, duration: 1.3, ease: 'power3.out' }
+            );
+        });
+        // ===== HERO IMAGE PARALLAX (scrub) =====
+        gsap.to('.hero-right img', {
+            y: 120,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '.hero',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: true,
+            },
+        });
+
+        // Анимация появления текстов
+        gsap.utils.toArray('.reveal').forEach(el => {
+            gsap.fromTo(el, 
+                { opacity: 0, y: 30 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: el,
+                        start: 'top 90%',
+                        toggleActions: 'play none none none',
+                    },
+                }
+            );
+        });
+
+        // Анимация появления картинок
+        gsap.utils.toArray('.reveal-image').forEach(el => {
+    if (el.classList.contains('hero-right')) return; // hero анимируется отдельно
+            gsap.fromTo(el, 
+                { opacity: 0, scale: 0.95 },
+                {
+                    opacity: 1,
+                    scale: 1,
+                    duration: 0.9,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: el,
+                        start: 'top 90%',
+                        toggleActions: 'play none none none',
+                    },
+                }
+            );
+        });
+
+        // Серебряный перелив для блоков
+        const shimmerBlocks = document.querySelectorAll('.how-card, .about-wrap, .consultation, .faq-item');
+        shimmerBlocks.forEach((block) => {
+            const shimmer = document.createElement('div');
+            shimmer.style.position = 'absolute';
+            shimmer.style.top = '0';
+            shimmer.style.left = '0';
+            shimmer.style.width = '100%';
+            shimmer.style.height = '100%';
+            shimmer.style.pointerEvents = 'none';
+            shimmer.style.background = 'linear-gradient(105deg, transparent 20%, rgba(255, 255, 255, 0.7) 50%, transparent 80%)';
+            shimmer.style.transform = 'translateX(-100%)';
+            shimmer.style.zIndex = '10';
+            
+            if (window.getComputedStyle(block).position === 'static') {
+                block.style.position = 'relative';
+            }
+            block.appendChild(shimmer);
+
+            gsap.fromTo(shimmer, 
+                { transform: 'translateX(-100%)' },
+                {
+                    transform: 'translateX(100%)',
+                    duration: 1.2,
+                    ease: 'power2.inOut',
+                    scrollTrigger: {
+                        trigger: block,
+                        start: 'top 85%',
+                        toggleActions: 'play none none none',
+                    },
+                }
+            );
+        });
+
+        // ===== FAQ ACCORDION =====
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                // Закрыть все открытые
+                faqItems.forEach(other => {
+                    if (other !== item) {
+                        other.classList.remove('active');
+                    }
+                });
+                // Переключить текущий
+                item.classList.toggle('active');
+            });
+        });
+        // ===== BOOKS ANIMATIONS (GSAP) =====
+        if (document.querySelector('.books-grid')) {
+            // Появление заголовка
+            gsap.fromTo('.books-header',
+                { opacity: 0, y: 40 },
+                {
+                    opacity: 1, y: 0,
+                    duration: 1,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: '.books',
+                        start: 'top 80%',
+                    },
+                }
+            );
+
+            // Появление карточек с каскадом
+            gsap.fromTo('.book-card',
+                { opacity: 0, y: 60, rotateX: 8 },
+                {
+                    opacity: 1, y: 0, rotateX: 0,
+                    duration: 1,
+                    ease: 'power3.out',
+                    stagger: 0.15,
+                    scrollTrigger: {
+                        trigger: '.books-grid',
+                        start: 'top 80%',
+                    },
+                }
+            );
+
+            // Пульсация тени обложек
+            gsap.utils.toArray('.book-cover').forEach((cover, i) => {
+                gsap.fromTo(cover,
+                    { boxShadow: '0 20px 50px rgba(0,0,0,0.12)' },
+                    {
+                        boxShadow: '0 25px 60px rgba(0,0,0,0.16)',
+                        duration: 1.2,
+                        ease: 'sine.inOut',
+                        yoyo: true,
+                        repeat: -1,
+                        delay: i * 0.3,
+                        scrollTrigger: {
+                            trigger: cover,
+                            start: 'top 85%',
+                            toggleActions: 'play pause resume pause',
+                        },
+                    }
+                );
+            });
+
+            // 3D-наклон за мышью (только desktop)
+            if (window.matchMedia('(pointer: fine)').matches) {
+                document.querySelectorAll('.book-card').forEach(card => {
+                    card.addEventListener('mousemove', (e) => {
+                        const rect = card.getBoundingClientRect();
+                        const x = (e.clientX - rect.left) / rect.width - 0.5;
+                        const y = (e.clientY - rect.top) / rect.height - 0.5;
+                        gsap.to(card, {
+                            rotateY: x * 6,
+                            rotateX: -y * 6,
+                            transformPerspective: 800,
+                            duration: 0.4,
+                            ease: 'power2.out',
+                        });
+                    });
+                    card.addEventListener('mouseleave', () => {
+                        gsap.to(card, {
+                            rotateY: 0,
+                            rotateX: 0,
+                            duration: 0.6,
+                            ease: 'power3.out',
+                        });
+                    });
+                });
+            }
+        }
+        // ===== LANGUAGE SWITCH =====
+        const langBtns = document.querySelectorAll('.lang-btn');
+        const allRu = document.querySelectorAll('.lang-ru');
+        const allEn = document.querySelectorAll('.lang-en');
+
+        function switchLang(lang) {
+            langBtns.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.lang === lang) {
+                    btn.classList.add('active');
+                }
+            });
+
+            if (lang === 'ru') {
+                allRu.forEach(el => el.style.display = '');
+                allEn.forEach(el => el.style.display = 'none');
+            } else {
+                allRu.forEach(el => el.style.display = 'none');
+                allEn.forEach(el => el.style.display = '');
+            }
+
+            localStorage.setItem('siteLang', lang);
+            ScrollTrigger.refresh();
+        }
+
+        const savedLang = localStorage.getItem('siteLang') || 'ru';
+        switchLang(savedLang);
+
+        langBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                switchLang(this.dataset.lang);
+            });
+        });
+    </script>
+</body>
+</html>

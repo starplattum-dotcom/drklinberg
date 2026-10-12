@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Публикации — Виталий Клинберг | Publications — Vitaly Klinberg</title>
+    <meta name="description" content="Научные публикации Виталия Клинберга: когнитивно-поведенческая терапия, депрессивная симптоматика, суицидальное поведение. Ссылки на Academia.edu." />
+    <link rel="canonical" href="https://drklinberg.netlify.app/publications.html" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://drklinberg.netlify.app/publications.html" />
+    <meta property="og:title" content="Публикации — Виталий Клинберг" />
+    <meta property="og:description" content="Научные публикации в области КПТ, депрессии и суицидального поведения." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ===== LANGUAGE SWITCHER ===== -->
+    <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="ru">
+            <span class="lang-flag">🇷🇺</span> RU
+        </button>
+        <button class="lang-btn" data-lang="en">
+            <span class="lang-flag">🇬🇧</span> EN
+        </button>
+    </div>
+
+    <!-- НАЗАД -->
+    <div class="pub-back">
+        <a href="index.html" class="pub-back-link">
+            <span>←</span>
+            <span class="lang-ru">На главную</span>
+            <span class="lang-en" style="display:none;">Back to home</span>
+        </a>
+    </div>
+
+    <!-- HERO ПУБЛИКАЦИЙ -->
+    <section class="pub-hero">
+        <div class="pub-hero-wrap">
+            <!-- RU -->
+            <p class="pub-small lang-ru">Публикации</p>
+            <h1 class="pub-title lang-ru">Научные работы</h1>
+            <p class="pub-intro lang-ru">Мои исследования в области когнитивно-поведенческой терапии, депрессивной симптоматики и суицидального поведения. Полные тексты доступны на платформе Academia.edu.</p>
+
+            <!-- EN -->
+            <p class="pub-small lang-en" style="display:none;">Publications</p>
+            <h1 class="pub-title lang-en" style="display:none;">Research papers</h1>
+            <p class="pub-intro lang-en" style="display:none;">My research in cognitive behavioral therapy, depressive symptomatology, and suicidal behavior. Full texts are available on Academia.edu.</p>
+        </div>
+    </section>
+
+    <!-- СПИСОК ПУБЛИКАЦИЙ -->
+    <section class="pub-list-section">
+        <div class="pub-list-wrap">
+            <a href="https://www.academia.edu/175862098/DIFFERENTIAL_DYNAMICS_OF_DEPRESSIVE_SYMPTOMATOLOGY_AND_SUICIDALITY_IN_COGNITIVE_BEHAVIORAL_THERAPY_A_RANDOMIZED_CONTROLLED_TRIAL"
+               target="_blank" rel="noopener" class="pub-card">
+                <div class="pub-card-meta">
+                    <span class="pub-year">2025</span>
+                    <span class="pub-journal lang-ru">Рандомизированное контролируемое исследование</span>
+                    <span class="pub-journal lang-en" style="display:none;">Randomized controlled trial</span>
+                </div>
+
+                <h2 class="pub-card-title lang-ru">Дифференциальная динамика депрессивной симптоматики и суицидальности в когнитивно-поведенческой терапии</h2>
+                <h2 class="pub-card-title lang-en" style="display:none;">Differential Dynamics of Depressive Symptomatology and Suicidality in Cognitive Behavioral Therapy</h2>
+
+                <p class="pub-card-desc lang-ru">Исследование различий в динамике депрессивных симптомов и суицидальных проявлений у пациентов в процессе когнитивно-поведенческой терапии.</p>
+                <p class="pub-card-desc lang-en" style="display:none;">A study of differences in the dynamics of depressive symptoms and suicidal manifestations in patients during cognitive behavioral therapy.</p>
+
+                <span class="pub-card-link lang-ru">Читать на Academia.edu →</span>
+                <span class="pub-card-link lang-en" style="display:none;">Read on Academia.edu →</span>
+            </a>
+
+            <!-- Сюда можно добавлять новые публикации, копируя блок .pub-card -->
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-wrap">
+            <p class="lang-ru">© 2026 Виталий Клинберг. Практикующий психолог.</p>
+            <p class="lang-en" style="display:none;">© 2026 Vitaly Klinberg. CBT Psychologist.</p>
+        </div>
+    </footer>
+
+    <!-- СКРИПТ ДЛЯ RU/EN -->
+    <script>
+        const langBtns = document.querySelectorAll('.lang-btn');
+        const allRu = document.querySelectorAll('.lang-ru');
+        const allEn = document.querySelectorAll('.lang-en');
+
+        function switchLang(lang) {
+            langBtns.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.lang === lang) btn.classList.add('active');
+            });
+            if (lang === 'ru') {
+                allRu.forEach(el => el.style.display = '');
+                allEn.forEach(el => el.style.display = 'none');
+            } else {
+                allRu.forEach(el => el.style.display = 'none');
+                allEn.forEach(el => el.style.display = '');
+            }
+            localStorage.setItem('siteLang', lang);
+        }
+
+        const savedLang = localStorage.getItem('siteLang') || 'ru';
+        switchLang(savedLang);
+
+        langBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                switchLang(this.dataset.lang);
+            });
+        });
+    </script>
+</body>
+</html>
